@@ -1,0 +1,16 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: nginx
+spec:
+  scaleTargetRef:
+    name: nginx
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  triggers:
+  - type: cron
+    metadata:
+      timezone: Asia/Taipei
+      start: "35 16 * * *"
+      end: "45 16 * * *"
+      desiredReplicas: "5"
